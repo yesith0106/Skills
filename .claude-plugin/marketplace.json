@@ -1,0 +1,20 @@
+{
+  "name": "yesith-skills",
+  "owner": {
+    "name": "yesith0106",
+    "url": "https://github.com/yesith0106"
+  },
+  "metadata": {
+    "description": "Open-source agent skills for Claude Code, Claude.ai and other agents that support SKILL.md.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "design-system-builder",
+      "description": "Build, use or update a design system shaped by attached inspiration (images, URLs, brand docs); outputs DESIGN.md plus linked HTML, and builds new UI that follows an existing DESIGN.md.",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/design-system-builder"]
+    }
+  ]
+}
