@@ -65,7 +65,13 @@ Just describe what you want. For example:
 
 ## Contributing
 
-Issues and pull requests are welcome. To add a skill, create `skills/<skill-name>/SKILL.md` with `name` and `description` front matter, add it to the table above and to [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json), and run `claude plugin validate .` before opening a PR.
+Ideas and improvements that make the design system better are welcome, for example:
+
+- Clearer rules for tokens, components, or accessibility
+- Better handling of a type of inspiration (screenshots, brand guides, URLs)
+- Fixes when the output is inconsistent or misses a standard practice
+
+Open an issue to discuss an idea, or send a pull request with your changes to [`SKILL.md`](skills/design-system-builder/SKILL.md).
 
 ## License
 
