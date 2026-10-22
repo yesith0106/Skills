@@ -1,8 +1,10 @@
-# Skills
+# Design System Builder
 
-Open-source [agent skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) for Claude Code, Claude.ai, and any other agent that reads `SKILL.md` files.
+An agent skill that helps anyone build a consistent, standard design system, no design-system expertise needed.
 
-A skill is a folder with a `SKILL.md` file: instructions the agent loads when a task needs them. Install one and the agent uses it on its own when it fits, or you can ask for it by name.
+Give your agent some inspiration (screenshots, URLs, brand guidelines) and it turns it into a complete system built on atomic design: design tokens, components, a `DESIGN.md` source of truth, and a visual HTML reference. Every new screen it builds after that follows the same system, so your UI stays consistent as it grows.
+
+Works with Claude Code, Claude.ai, Cursor, Codex, and any other agent that reads `SKILL.md` files.
 
 ## Skills
 
