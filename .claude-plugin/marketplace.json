@@ -5,8 +5,8 @@
     "url": "https://github.com/yesith0106"
   },
   "metadata": {
-    "description": "Open-source agent skills for Claude Code, Claude.ai and other agents that support SKILL.md.",
-    "version": "1.0.0"
+    "description": "Open-source design skills for Claude Code, Claude.ai and other agents that support SKILL.md: build a design system, and design pages that don't look AI-made.",
+    "version": "1.1.0"
   },
   "plugins": [
     {
@@ -14,7 +14,18 @@
       "description": "Build, use or update a design system shaped by attached inspiration (images, URLs, brand docs); outputs DESIGN.md plus linked HTML, and builds new UI that follows an existing DESIGN.md.",
       "source": "./",
       "strict": false,
-      "skills": ["./skills/design-system-builder"]
+      "skills": [
+        "./skills/design-system-builder"
+      ]
+    },
+    {
+      "name": "taste",
+      "description": "Design or redesign websites, landing pages, dashboards and portfolios with a designer's judgment: frames the audience, invents a fitting style, sets exact values for all 8 design settings, then screenshots, audits and fixes the result, flagging AI tells.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/taste"
+      ]
     }
   ]
 }

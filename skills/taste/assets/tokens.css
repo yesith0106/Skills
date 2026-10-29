@@ -1,0 +1,179 @@
+/*
+  Values file. Every design value used in the build comes from here.
+  Grouped by the 8 settings. Replace the example values with the ones
+  from design-decisions.md; delete what you don't need, add steps if needed.
+  The examples below are a neutral, light starting point, not a style.
+*/
+
+:root {
+  /* ---------- 1. Layout ---------- */
+  --layout-max: 1280px;             /* main frame */
+  --layout-text: 1024px;            /* text-heavy pages */
+  --layout-columns: 12;
+  --layout-gutter: 24px;
+  --layout-padding: clamp(20px, 4vw, 48px); /* outer page padding */
+
+  /* ---------- 2. Spacing ---------- */
+  /* inside components */
+  --space-2xs: 4px;
+  --space-xs: 6px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  /* between blocks and sections */
+  --space-block: 48px;              /* text → visual, header → content (small) */
+  --space-header: 80px;             /* section header → section content */
+  --space-section: 128px;           /* between sections, desktop */
+  --space-section-mobile: 64px;     /* about half of desktop */
+  --space-final: 192px;             /* before the final CTA */
+
+  /* ---------- 3. Typography ---------- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --font-features: "cv11", "ss01";   /* optional stylistic sets */
+
+  --weight-regular: 400;
+  --weight-medium: 510;
+  --weight-semibold: 590;
+  /* max 4 weights */
+
+  /* size / line height / tracking move together */
+  --text-xs: 12px;   --leading-xs: 1.5;   --tracking-xs: 0;
+  --text-sm: 14px;   --leading-sm: 1.5;   --tracking-sm: -0.005em;
+  --text-base: 16px; --leading-base: 1.55; --tracking-base: -0.011em;
+  --text-lg: 18px;   --leading-lg: 1.5;   --tracking-lg: -0.011em;
+  --text-xl: 20px;   --leading-xl: 1.33;  --tracking-xl: -0.012em;
+  --text-2xl: 24px;  --leading-2xl: 1.33; --tracking-2xl: -0.012em;
+  --text-3xl: 32px;  --leading-3xl: 1.15; --tracking-3xl: -0.022em;
+  --text-4xl: 40px;  --leading-4xl: 1.1;  --tracking-4xl: -0.022em;
+  --text-5xl: 48px;  --leading-5xl: 1.05; --tracking-5xl: -0.024em;
+  --text-6xl: 56px;  --leading-6xl: 1.02; --tracking-6xl: -0.025em;
+  --text-hero: clamp(40px, 26px + 3.6vw, 72px);
+  --leading-hero: 1.0;
+  --tracking-hero: -0.025em;
+  --measure-body: 62ch;
+  --measure-heading: 20ch;
+
+  /* ---------- 4. Motion ---------- */
+  --duration-instant: 0.1s;   /* press, hover-in */
+  --duration-fast: 0.16s;     /* hover-out, toggles */
+  --duration-base: 0.25s;     /* menus, accordions */
+  --duration-slow: 0.5s;      /* reveals, modals */
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --press-scale: 0.97;
+
+  /* ---------- 5. Color ---------- */
+  /* neutrals tinted toward the brand hue; no pure black/white */
+  --color-bg: #fbfbfc;
+  --color-bg-subtle: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-text: #16181d;          /* primary */
+  --color-text-secondary: #4b5262;
+  --color-text-tertiary: #6b7282; /* still ≥ 4.5:1 on bg */
+  --color-text-faint: #9aa0ab;    /* disabled / decorative only */
+  --color-border: #e4e7ec;
+  --color-border-strong: #d2d6dd;
+  --color-accent: #3b5bdb;
+  --color-accent-hover: #2f49b0;  /* ~20% darker */
+  --color-on-accent: #ffffff;
+  --color-focus: var(--color-accent);
+  --color-success: #1f8a4c;
+  --color-warning: #b26a00;
+  --color-danger: #c92a2a;
+
+  /* ---------- 6. Surfaces ---------- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  /* nested: inner = outer − padding */
+
+  --control-sm: 32px;
+  --control-md: 40px;
+  --control-lg: 48px;
+
+  --shadow-sm: 0 1px 2px rgb(22 24 29 / 0.06), 0 1px 1px rgb(22 24 29 / 0.04);
+  --shadow-md: 0 12px 24px -12px rgb(22 24 29 / 0.18), 0 4px 8px -4px rgb(22 24 29 / 0.08);
+  --border-hairline: 1px solid var(--color-border);
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-focus);
+
+  /* ---------- 7. Imagery ---------- */
+  --media-radius: var(--radius-lg);
+  --media-border: var(--border-hairline);
+  --icon-size: 18px;
+  --icon-stroke: 1.5;
+}
+
+/*
+  App UI and dashboards (tool pages only, see ../dashboards.md).
+  Delete this block for pitch, reading and showcase pages.
+  Roles come in pairs: every surface has the text color that sits on it.
+*/
+:root {
+  /* color roles */
+  --color-card: var(--color-surface);       --color-on-card: var(--color-text);
+  --color-popover: var(--color-surface);    --color-on-popover: var(--color-text);
+  --color-muted: #f1f2f4;                   --color-on-muted: var(--color-text-tertiary); /* quiet fills; helper text */
+  --color-hover: #eceef1;                   --color-on-hover: var(--color-text);          /* menu items, ghost buttons, nav */
+  --color-input: var(--color-border-strong);
+  --color-ring: var(--color-accent);
+  --color-sidebar: var(--color-bg-subtle);  --color-on-sidebar: var(--color-text);
+  --color-sidebar-hover: #e9ebee;
+  --color-sidebar-border: var(--color-border);
+  /* data series only: one hue in five steps by default */
+  --chart-1: #9db0f0;
+  --chart-2: #6d87e6;
+  --chart-3: #3b5bdb;
+  --chart-4: #2f49b0;
+  --chart-5: #233785;
+
+  /* one base radius; the rest derive from it */
+  --radius: 10px;
+  --radius-sm: calc(var(--radius) * 0.6);  /* menu items, keys */
+  --radius-md: calc(var(--radius) * 0.8);  /* buttons, inputs, menus, tooltips */
+  --radius-lg: var(--radius);              /* table container, dialogs */
+  --radius-xl: calc(var(--radius) * 1.4);  /* cards, inset panel */
+
+  /* control ladder: one height per row of controls */
+  --control-xs: 24px;
+  --control-sm: 32px;   /* toolbars, nav items, pagination */
+  --control-md: 36px;   /* fields, selects, form buttons */
+  --control-lg: 40px;   /* rare prominent action */
+  --icon-size: 16px;
+
+  /* shell */
+  --sidebar-width: 256px;
+  --sidebar-width-icon: 48px;
+  --sidebar-width-mobile: 288px;
+  --header-height: 48px;
+  --content-padding: 16px;           /* 24px from 1024px */
+  --row-height: 44px;                /* table rows 40–48px */
+
+  /* states */
+  --ring-focus: 0 0 0 3px color-mix(in srgb, var(--color-ring) 50%, transparent);
+  --ring-invalid: 0 0 0 3px color-mix(in srgb, var(--color-danger) 20%, transparent);
+  --opacity-disabled: 0.5;
+  --duration-state: 0.15s;
+}
+@media (min-width: 1024px) { :root { --content-padding: 24px; } }
+
+/* Reduced motion: keep feedback instant, remove movement */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile section spacing */
+@media (max-width: 767px) {
+  :root { --space-section: var(--space-section-mobile); --space-header: 48px; --space-final: 96px; }
+}
