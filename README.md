@@ -4,6 +4,8 @@ An agent skill that helps anyone build a consistent, standard design system, no 
 
 Give your agent some inspiration (screenshots, URLs, brand guidelines) and it turns it into a complete system built on atomic design: design tokens, components, a `DESIGN.md` source of truth, and a visual HTML reference. Every new screen it builds after that follows the same system, so your UI stays consistent as it grows.
 
+It also steers clear of the generic look of AI-generated UI: no purple gradients, gradient text, glowing edges, eyebrow labels or icon-tile card grids unless your inspiration asks for them. Type, spacing, color contrast and motion are held to a craft floor, and each design system gets its own list of patterns to avoid.
+
 Works with Claude Code, Claude.ai, Cursor, Codex, and any other agent that reads `SKILL.md` files.
 
 ## Skills
