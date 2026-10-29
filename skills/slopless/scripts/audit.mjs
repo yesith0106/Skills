@@ -3,7 +3,7 @@
 // plus floor-rule breaks (FAIL), likely problems (WARN) and AI tells (../ai-tells.md).
 // Usage: node audit.mjs <url-or-file> [--json] [--expressive] [--ignore=<css selector>]
 // Product mockups and graphics (class names with illustration/graphic/mockup/
-// screenshot/preview, aria-hidden, role=img, [data-taste-ignore]) are left out of the
+// screenshot/preview, aria-hidden, role=img, [data-slopless-ignore]) are left out of the
 // page counts, since their values belong to the product, not the page design.
 // Rule ids (T1, S2, C4…) match the setting files in ../settings/.
 
@@ -96,7 +96,7 @@ function collect(ignoreSel) {
       const cls = typeof n.className === "string" ? n.className : (n.getAttribute && n.getAttribute("class")) || "";
       if (
         n.getAttribute("aria-hidden") === "true" || n.getAttribute("role") === "img" || n.hasAttribute("inert") ||
-        n.hasAttribute("data-taste-ignore") || GRAPHIC_RE.test(cls) || (ignoreSel && n.matches(ignoreSel))
+        n.hasAttribute("data-slopless-ignore") || n.hasAttribute("data-taste-ignore") || GRAPHIC_RE.test(cls) || (ignoreSel && n.matches(ignoreSel))
       ) { res = true; break; }
       n = n.parentElement;
     }
@@ -495,7 +495,7 @@ function collectMobile() {
     const tag = el.tagName.toLowerCase();
     const t = [...el.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent).join("").trim();
     if (t.length > 30 && parseFloat(cs.fontSize) < 12) small.push(t.slice(0, 40));
-    const inGraphic = el.closest('[aria-hidden="true"], [role="img"], [inert], [data-taste-ignore]') ||
+    const inGraphic = el.closest('[aria-hidden="true"], [role="img"], [inert], [data-slopless-ignore], [data-taste-ignore]') ||
       (() => { for (let n = el; n && n !== document.body; n = n.parentElement) { const c = typeof n.className === "string" ? n.className : ""; if (/(^|[\s_-])(illustration|graphic|mockup|screenshot|preview|product-ui|app-frame|showcase)/i.test(c)) return true; } return false; })();
     if (!inGraphic && el.tabIndex >= 0 && !el.disabled && (tag === "button" || (tag === "a" && el.closest("nav, header")) || el.getAttribute("role") === "button") && r.height < 40 && r.width < 300) {
       targets.push({ label: (el.innerText || el.getAttribute("aria-label") || tag).trim().slice(0, 30), h: Math.round(r.height), w: Math.round(r.width) });
@@ -512,7 +512,7 @@ function collectMobile() {
 
 // ---------------------------------------------------------------- run
 const T0 = Date.now();
-const debug = (m) => process.env.TASTE_DEBUG && console.error(`[${((Date.now() - T0) / 1000).toFixed(1)}s] ${m}`);
+const debug = (m) => process.env.SLOPLESS_DEBUG && console.error(`[${((Date.now() - T0) / 1000).toFixed(1)}s] ${m}`);
 const { chromium } = await loadPlaywright();
 const browser = await chromium.launch();
 debug("launched");

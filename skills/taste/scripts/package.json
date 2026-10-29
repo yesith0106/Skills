@@ -1,9 +1,0 @@
-{
-  "name": "taste-scripts",
-  "private": true,
-  "type": "module",
-  "description": "Screenshot and audit scripts for the taste skill",
-  "dependencies": {
-    "playwright": "^1.48.0"
-  }
-}

@@ -1,9 +1,9 @@
 ---
-name: taste
+name: slopless
 description: Design or redesign websites, landing pages and app UI with a designer's judgment. Frames the audience, invents a style that fits, sets exact values for layout, spacing, typography, motion, color, surfaces, imagery and copy, then screenshots and audits the result and fixes it. Use whenever the user wants to create a new site, page or interface, or improve, polish, redesign, modernize or fix the look of an existing one, including vague asks like "make it look better", "make it look professional" or "this looks off".
 ---
 
-# Taste
+# Slopless
 
 Design like a designer: decide what the page must prove, invent a style that fits, build it from exact values, then look at the result and fix it.
 

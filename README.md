@@ -9,9 +9,9 @@ They work with Claude Code, Claude.ai, Cursor, Codex, and any other agent that r
 | Skill | What it does |
 |---|---|
 | [design-system-builder](skills/design-system-builder/SKILL.md) | Turns inspiration (images, screenshots, URLs, brand docs) into a full design system based on atomic design: tokens, components, a `DESIGN.md` source of truth, and a visual HTML reference. It also builds new UI that follows an existing `DESIGN.md`, and updates the system as it grows. |
-| [taste](skills/taste/SKILL.md) | Designs or redesigns websites and app UI with a designer's judgment. It works out who the page is for and invents a style that fits, then builds from exact values for layout, spacing, type, motion, color, surfaces, imagery and copy. Then it screenshots and audits the result and fixes it. It covers landing pages, dashboards and expressive portfolios, and flags the patterns that make pages look AI-generated. |
+| [slopless](skills/slopless/SKILL.md) | Designs or redesigns websites and app UI with a designer's judgment. It works out who the page is for and invents a style that fits, then builds from exact values for layout, spacing, type, motion, color, surfaces, imagery and copy. Then it screenshots and audits the result and fixes it. It covers landing pages, dashboards and expressive portfolios, and flags the patterns that make pages look AI-generated. |
 
-**Using both:** the design system builder sets up the system, and taste designs and reviews the pages built on it.
+**Using both:** the design system builder sets up the system, and slopless designs and reviews the pages built on it.
 
 ## Install
 
@@ -21,7 +21,7 @@ Run this inside Claude Code, choosing the skills you want:
 
 ```
 /plugin install design-system-builder --marketplace yesith0106/Skills
-/plugin install taste --marketplace yesith0106/Skills
+/plugin install slopless --marketplace yesith0106/Skills
 ```
 
 On older versions of Claude Code, add the marketplace first, then install:
@@ -29,7 +29,7 @@ On older versions of Claude Code, add the marketplace first, then install:
 ```
 /plugin marketplace add yesith0106/Skills
 /plugin install design-system-builder@yesith-skills
-/plugin install taste@yesith-skills
+/plugin install slopless@yesith-skills
 ```
 
 To get updates later, run `/plugin marketplace update yesith-skills`.
@@ -49,25 +49,25 @@ Copy the skill folders into your skills directory:
 ```bash
 git clone https://github.com/yesith0106/Skills.git
 cp -r Skills/skills/design-system-builder ~/.claude/skills/
-cp -r Skills/skills/taste ~/.claude/skills/
+cp -r Skills/skills/slopless ~/.claude/skills/
 ```
 
 Use `~/.claude/skills/` for all your projects, or `.claude/skills/` inside a single project.
 
 ### Claude.ai and the Claude app
 
-1. Download a skill folder ([`design-system-builder`](skills/design-system-builder) or [`taste`](skills/taste)) and zip it.
+1. Download a skill folder ([`design-system-builder`](skills/design-system-builder) or [`slopless`](skills/slopless)) and zip it.
 2. Open **Settings → Capabilities → Skills** and upload the zip.
 
-### Taste's screenshot and audit tools (optional)
+### Screenshot and audit tools for slopless (optional)
 
-Taste uses Playwright to screenshot and measure pages. Install it once inside the skill folder:
+Slopless uses Playwright to screenshot and measure pages. Install it once inside the skill folder:
 
 ```bash
-cd ~/.claude/skills/taste/scripts && npm install && npx playwright install chromium
+cd ~/.claude/skills/slopless/scripts && npm install && npx playwright install chromium
 ```
 
-Without it, taste still works and reviews the code by reading it instead.
+Without it, slopless still works and reviews the code by reading it instead.
 
 ## Usage
 

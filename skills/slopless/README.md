@@ -1,4 +1,4 @@
-# Taste
+# Slopless
 
 An agent skill that designs like a designer. It works out who the page is for, invents a style that fits, builds from exact values, then screenshots and audits the result and fixes what it finds. It works for new sites and for improving existing ones.
 

@@ -1,0 +1,9 @@
+{
+  "name": "slopless-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Screenshot and audit scripts for the slopless skill",
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}
