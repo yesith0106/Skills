@@ -1,6 +1,6 @@
 ---
 name: "design-system-builder"
-description: "Build, use or update a design system shaped by attached inspiration (images, URLs, brand docs); outputs DESIGN.md plus linked HTML, and builds new UI that follows an existing DESIGN.md, avoiding the generic look of AI-generated UI."
+description: "Build, use or update a design system shaped by attached inspiration (images, URLs, brand docs); outputs DESIGN.md plus linked HTML, and builds new UI that follows an existing DESIGN.md."
 ---
 
 # Design System Builder
@@ -32,47 +32,6 @@ Added by this builder:
 - **Tokens sit beneath atoms** and are the only source of visual values.
 - **DESIGN.md is the single source of truth**; everything visual is generated from it.
 - **Inspiration informs qualities, never identity**: no real brand's logo, wordmark, mascot or signature design.
-- **No generic AI output.** The system and everything built from it must look chosen for this product, not like the default look of AI-generated UI. Follow the anti-slop rules below in every mode.
-
-## Anti-slop rules (all modes)
-
-**The inspiration and brief win.** Everything in this section is a default for choices the user left open. If the inspiration or brand clearly asks for something listed here (a cream ground, an italic serif, a hard offset shadow), honor it and record why under Visual DNA. Reaching for one of these patterns when nobody asked for it means no decision was made; rewrite the element, don't just soften it.
-
-**The calibration test.** AI-generated interfaces cluster around a few looks whatever the subject: warm cream ground with a high-contrast serif and a terracotta accent; near-black with one neon accent and glowing edges; purple-to-blue gradients; editorial hairlines with italic display serif and small tracked mono labels; flat saturated color with black boxes and hard offset shadows. If someone could guess the system's look from the product category alone, it isn't derived from the inspiration yet. Rework it until they couldn't.
-
-**Decisions to make deliberately, never by default**
-- **Light or dark:** write one sentence about who uses the product, where, and under what light, and let that pick the default theme.
-- **Color strategy:** name it before picking colors: restrained (tinted neutrals plus one accent; usual for apps, dashboards and docs), committed (one saturated color owns 30–60% of the surface), full palette (3–4 named roles), or drenched (the surface is the color). Every color gets a role (surface, text, action, focus, selection, border, status, data); no bag of swatches. On marketing surfaces, let color own whole regions instead of scattering small accents over a neutral ground.
-- **Fonts:** pick faces that fit the product's world, using the fewest families that each have a distinct role. Apps and docs are well served by a good workhorse UI face or a system stack. For expressive or marketing surfaces, these faces are the training-data defaults and need a reason no other face could meet: Inter (as display), Roboto, Geist, Fraunces, Playfair Display, Cormorant, Lora, Newsreader, Syne, Space Grotesk, Space Mono, IBM Plex, DM Sans, DM Serif, Outfit, Plus Jakarta Sans, Instrument Sans. "Books want a serif" or "tech wants a mono" is not a reason.
-
-**Never, unless the inspiration asks for it**
-- Gradient text; purple/violet gradients; cyan or neon on dark; colored glow shadows; radial "spotlight" glows behind a hero; decorative grid-line or stripe backgrounds; glass and blur as decoration.
-- A colored `border-left`/`border-right` over 1px on cards, list items, callouts or alerts; a thick accent border on a rounded card.
-- Rows of same-size cards (icon tile + heading + text) as the page structure; a small rounded icon tile stacked above a heading; cards nested in cards; every card in a row wearing both a hairline border and a wide soft shadow (pick one).
-- A tiny uppercase eyebrow, kicker or pill chip above a heading; tiny section numbers (01 / 02 / 03) unless the sequence matters to the reader; a long full-sentence headline at display size.
-- The hero-metric template (big number, small label, supporting stats); sparklines, progress rings or placeholder rectangles standing in for content.
-- Hard offset shadows (`4px 4px 0`) outside a genuinely neobrutalist system. Shadows otherwise have an offset and a soft blur.
-- Monospace as a costume for "technical"; mono is for code, data and measurements.
-- Emoji or unicode glyphs as icons; mixed icon sets. Use one library at one stroke weight.
-- Bounce or elastic easing; auto-scrolling marquees; pulsing dots or blinking cursors that aren't tied to live data or a real input; the same entrance animation on every section; content hidden until a script reveals it.
-- Big illustrations built from primitive SVG shapes, or wavy `clip-path` blobs. Use real imagery, an authored asset, or nothing.
-- Modals for tasks that need neither interruption nor protected focus.
-
-**Craft floor (checked on every rendered result)**
-- **Type:** adjacent roles differ by at least 1.25× in size, or clearly in weight. Body text 16px or larger on the web (1rem); functional text (labels, buttons, table cells, nav) never under 11px, and adding a smaller step to the scale doesn't make it legible. Body line height 1.4–1.7; body measure 45–75 characters (`max-width: 65ch`); `text-wrap: balance` on headings and `pretty` on body. Letter spacing no tighter than -0.04em on display type and no wider than 0.05em on body text; all caps only for short labels. On dark surfaces, give light text a little more line height, tracking and weight.
-- **Spacing:** a 4-based scale with real rhythm: tight inside groups, generous between them, more space above a heading than below it. One value repeated everywhere is not a rhythm. Group with proximity before adding containers. Text never touches a container edge (at least 12–16px inside colored or bordered boxes) or the viewport edge (at least 16px).
-- **Color:** contrast checked with code: body text 4.5:1, large text, icons, controls and focus rings 3:1, in both themes and every state. On colored surfaces, tint secondary text from that hue or the foreground, never plain gray. Build ramps in OKLCH and reduce chroma near white and black. Design the dark theme on its own; don't just invert the light one. Color is never the only signal for status or data.
-- **Motion:** 100–150ms for feedback, 150–300ms for state changes, 300–500ms for overlays and view changes; exits faster than entrances; ease-out such as `cubic-bezier(0.16, 1, 0.3, 1)`; animate transform and opacity rather than layout properties; a `prefers-reduced-motion` path that reduces movement but keeps state feedback. One deliberate motion moment per screen, not effects scattered everywhere.
-- **Browser surfaces:** theme the parts nobody draws: text selection, caret, focus rings, scrollbars, link underline offset, and tabular numerals in data. This is the cheapest sign a UI was designed rather than assembled.
-- **States:** every interactive component has default, hover, focus-visible, active, disabled, loading, error and (where relevant) empty and success states.
-
-**Copy**
-- Buttons name the action with a specific verb and object ("Export report", not "Submit" or "OK"). Destructive actions name what is lost; prefer undo to confirmation when undo is safe.
-- Errors say what failed, why when known, and how to recover. Empty states say why it's empty and what to do next. Placeholders are examples, never labels.
-- Say each idea once; if the heading explains the state, cut the intro sentence.
-- No marketing buzzwords (streamline, empower, supercharge, seamless, world-class, next-generation, cutting-edge, enterprise-grade). Say what the product literally does.
-- No AI cadence: repeated "X. No Y." / "Not a feature. A platform." lines, dismissing things as "theater", or heavy em-dash use.
-- Realistic content everywhere, never lorem ipsum. Illustrative data can be invented, but never invented claims: prices, customers, metrics or capabilities the product doesn't have.
 
 ---
 
@@ -109,13 +68,13 @@ for i in np.argsort(-counts):
 - **URLs**: WebFetch; note type, density, color and component patterns.
 - **Brand docs**: stated rules override inferred values.
 
-Synthesize: mood words, palette with roles, type character and fonts (Google Fonts unless the brand specifies), shape language, density and base spacing unit, imagery/icon style, motion feel, voice and tone, and conflicts between sources with their resolution. Also record the three deliberate decisions from the anti-slop rules: the use-scene sentence that picks light or dark, the named color strategy, and why each font fits. Then run the calibration test: if the DNA lands on one of the generic AI looks and the inspiration didn't ask for it, go back to the sources and find what is specific to them. If the user is present, show it briefly before continuing.
+Synthesize: mood words, palette with roles, type character and fonts (Google Fonts unless the brand specifies), shape language, density and base spacing unit, imagery/icon style, motion feel, voice and tone, and conflicts between sources with their resolution. If the user is present, show it briefly before continuing.
 
 ### 3. Tokens → Atoms → Molecules → Organisms → Templates → Pages
-- **Tokens**: primitive (color ramps 50–900 built in OKLCH, type scale on a ratio of at least 1.25, 4-based spacing, radii, elevation, borders, motion, breakpoints) and semantic (`color.text.primary`, `color.action.primary.bg`, `space.inset.md`). Components use semantic tokens only. Light and dark themes, each designed rather than inverted. Bake the craft floor into the tokens themselves (body size, line heights, measure, tracking, durations, easing, focus ring, selection color) so screens built from them pass by default. Check WCAG contrast with code (≥ 4.5:1 body, ≥ 3:1 large text, icons and UI boundaries).
+- **Tokens**: primitive (color ramps 50–900, type scale on a ratio, 4- or 8-based spacing, radii, elevation, borders, motion, breakpoints) and semantic (`color.text.primary`, `color.action.primary.bg`, `space.inset.md`). Components use semantic tokens only. Light and dark themes. Check WCAG contrast with code (≥ 4.5:1 body, ≥ 3:1 large text and UI boundaries).
 - **Atoms**: type styles, icons (one open set), buttons in all states (default, hover, focus-visible, active, disabled, loading), inputs, checkbox, radio, toggle, select, label, badge, avatar, divider, link, spinner, media ratios.
 - **Molecules**: form field, search form, button group, nav item, media object, stat, breadcrumb, pagination, toast, tooltip, tabs.
-- **Organisms**: header, navigation (desktop + mobile), footer, hero, card grid/list, data table, form section, dialog, sidebar, empty state. Shape each one from the visual DNA, not the stock template: no icon-tile feature cards, eyebrow-over-headline heroes or hero-metric blocks unless the inspiration shows them.
+- **Organisms**: header, navigation (desktop + mobile), footer, hero, card grid/list, data table, form section, dialog, sidebar, empty state.
 - **Templates**: 2–4 layouts for the scoped screens on a defined grid, with content-structure placeholders.
 - **Pages**: invented realistic content plus at least two stress variations each; record what broke and fix it at the right level.
 
@@ -137,16 +96,13 @@ tokens:
       light: { text.primary: "{neutral.900}", surface.base: "{neutral.50}", action.primary.bg: "{brand.600}", ... }
       dark:  { ... }
   typography:
-    families: { ui: "...", display: "...", mono: "..." }   # only families with a distinct role
+    families: { sans: "...", serif: "...", mono: "..." }
     scale: { ratio: 1.25, base: 16 }
-    styles: { display: {...}, h1: {...}, h2: {...}, body: {...}, label: {...}, caption: {...} }   # size, weight, lineHeight, tracking each
-    measure: 65ch
+    styles: { display: {...}, h1: {...}, h2: {...}, body: {...}, caption: {...} }
   space: { base: 4, steps: { 1: 4, 2: 8, 3: 12, 4: 16, 6: 24, 8: 32, 12: 48, 16: 64 } }
   radius: { sm: ..., md: ..., lg: ..., full: 9999 }
   elevation: { 1: "...", 2: "...", 3: "..." }
-  motion: { duration: { fast: 120ms, base: 200ms, slow: 400ms }, easing: { out: "cubic-bezier(0.16, 1, 0.3, 1)", in: "..." }, reducedMotion: "..." }
-  focus: { ring: "...", offset: 2px }
-  selection: { bg: "...", text: "..." }
+  motion: { duration: { fast: 120ms, base: 200ms, slow: 320ms }, easing: { standard: "..." } }
   breakpoints: { sm: 640, md: 768, lg: 1024, xl: 1280 }
   layout: { maxWidth: ..., columns: 12, gutter: "{space.6}" }
 ---
@@ -167,8 +123,6 @@ How to load the tokens in the stack (e.g. include `tokens.css` and set `data-the
 - Spacing comes only from the space scale; type only from named styles.
 - One primary action per view; button hierarchy is primary → secondary → tertiary.
 - Layout follows the grid and breakpoints in front matter.
-### Avoid
-This system's own list of patterns it must never produce: the anti-slop "never" list minus anything the inspiration deliberately chose, plus anything specific to this system (e.g. "no shadows on cards; elevation is reserved for overlays"). Write it as concrete rules a builder can check.
 ### Component index
 | ID | Level | Use it for | Don't use it for | Composition |
 ### Content & voice
@@ -181,7 +135,6 @@ Check existing components first; decide the level (atom/molecule/organism/templa
 The checks a finished screen must pass (see Part B step 5).
 
 ## 2. Visual DNA
-Includes the use-scene sentence, the color strategy, why each font fits, and any anti-slop default the inspiration overrode, with the reason.
 ## 3. Inspiration sources
 | # | Source | What was taken | Weight |
 ## 4. Foundations
@@ -210,10 +163,9 @@ Write `build_design_html.py` that parses DESIGN.md and emits `design-system.html
 - Show swatches with hex, token name and contrast ratio; a type specimen; spacing and radius scales.
 - Render templates with labelled placeholders and pages with real content plus a variation toggle.
 - Include light/dark and mobile/tablet/desktop toggles; be self-contained (inline CSS/JS, Google Fonts only) and work at phone width.
-- Follow the system itself and the anti-slop rules. The reference page is the first proof that the system doesn't look generic.
 
 ### 6. Deliver
-1. Run the build; screenshot the HTML at phone and desktop width and check it against the craft floor and the calibration test. Fix what one look shows before looking again, rather than screenshotting after every tweak.
+1. Run the build; screenshot the HTML at phone and desktop width and check it.
 2. Publish `design-system.html` as an artifact, add its link to DESIGN.md, rebuild.
 3. Send `DESIGN.md`, `design-system.html` and `tokens.css` (and the build script if they'll maintain it).
 4. Close with one sentence on the system's character and one next step, e.g. "ask me for any screen and I'll build it from this system."
@@ -233,10 +185,6 @@ Write `build_design_html.py` that parses DESIGN.md and emits `design-system.html
    - Works across the system's breakpoints and in both themes.
    - Copy follows the voice rules; one primary action per view.
    - At least one stress variation tried (long text, empty state, error).
-   - Nothing from the system's **Avoid** list or the anti-slop "never" list; copy has no buzzwords or AI cadence.
-   - Craft floor holds on the rendered result: type hierarchy, measure, spacing rhythm (more space above headings than below), states, themed focus and selection.
-   - Squint test: with the detail blurred, the primary element, the secondary element and the main groups still read in order.
-   - Cover the product name: the screen should still look like this system, not a generic template.
 6. **Deliver** in the form the user asked for (a page or prototype is published as an artifact; code in files), and list in one line which components were used and any proposed additions.
 
 If the user asks how to use the system, answer from section 1 of their DESIGN.md rather than general advice.
@@ -246,7 +194,7 @@ If the user asks how to use the system, answer from section 1 of their DESIGN.md
 # Part C — Update
 
 1. Read the current DESIGN.md. Run intake on only the new sources and add rows to the sources table (with any weighting the user gives, e.g. "colors from image 2, type from the site").
-2. Diff the new DNA against the current one and list the proposed changes ("radius 4 → 12px, accent teal → coral"). Run the calibration test on the result, and update the **Avoid** list if the change adds or removes a deliberate exception. Ask first if the change is large and the user is present.
+2. Diff the new DNA against the current one and list the proposed changes ("radius 4 → 12px, accent teal → coral"). Ask first if the change is large and the user is present.
 3. Edit front-matter tokens first, then only the component sections needing structural change, then section 1 if rules, voice or the component index changed. Re-run the contrast check.
 4. Bump the version (minor for additions, major for changes that alter the look or break usage), add a changelog entry, rebuild the HTML and tokens.css, republish to the **same artifact URL**, and send the files again.
 
@@ -257,5 +205,3 @@ If the user asks how to use the system, answer from section 1 of their DESIGN.md
 - Components use semantic tokens only; all pairs pass contrast in both themes; every interactive atom has a visible focus state.
 - Templates show structure; pages show real content and variations.
 - Nothing reproduces a real brand's logo, mascot or signature design.
-- The system passes the calibration test, section 1 has a concrete **Avoid** list, and every anti-slop default it breaks is a recorded choice from the inspiration.
-- Tokens encode the craft floor: type ratio ≥ 1.25, body ≥ 16px, functional text ≥ 11px, measure, 4-based spacing, ease-out motion with a reduced-motion path, themed focus ring and selection.
